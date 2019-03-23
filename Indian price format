@@ -1,0 +1,17 @@
+ 
+    /*
+    * Price Format
+    * variables are objeEventRace.priceFormate which contain the name of class in which price keyup works 
+    * */
+ $(document).on('keyup',objEventRace.priceFormat,function (event) {
+        event.preventDefault();
+        let _this=$(this);
+        let val=_this.val().replace(/,/g , '');
+        let x=val.toString();
+        let lastThree = x.substring(x.length-3);
+        let otherNumbers = x.substring(0,x.length-3);
+        if(otherNumbers !== '')
+            lastThree = ',' + lastThree;
+        var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+        _this.val(res);
+    });
